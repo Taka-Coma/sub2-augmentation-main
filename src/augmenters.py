@@ -615,18 +615,14 @@ if __name__ == "__main__":
     from data import PTBDataset
 
     random.seed(115)
-    # sst_dataset = PTBDataset(
-    #     # f'../data/sst/train_c.txt', use_spans=False
-    #     f'data/sst/train.txt', use_spans=False
-    # )
-    # # print(sst_dataset)
-    # # for key, value in sst_dataset.__dict__.items():
-    # #     print(key, ':', value,type(value))
+    sst_dataset = PTBDataset(
+        # f'../data/sst/train_c.txt', use_spans=False
+        f'data/sst/train.txt', use_spans=False
+    )
 
-    # sst_rand_augmenter = CParseRandomAugmenter(sst_dataset)
-    # sst_augmented_dataset = sst_rand_augmenter.augment(100000)
-    # from IPython import embed; embed(using=False)
-
+    sst_rand_augmenter = CParseRandomAugmenter(sst_dataset)
+    sst_augmented_dataset = sst_rand_augmenter.augment(100000)
+    from IPython import embed; embed(using=False)
 
     random.seed(115)
     sst_dataset = PTBDataset(
@@ -637,79 +633,80 @@ if __name__ == "__main__":
     sst_augmented_dataset = sst_syno_augmenter.augment(100000)
     from IPython import embed; embed(using=False)
 
-    # random.seed(115)
-    # sst_dataset = PTBDataset(
-    #     # f'../data/sst/train_cl.txt', use_spans=True, span_min_length=4
-    #     f'data/sst/train.txt', use_spans=False
-    # )
-    # sst_free_augmenter = CParseLengthFreeAugmenter(sst_dataset)
-    # sst_augmented_dataset = sst_free_augmenter.augment(100000)
-    # from IPython import embed; embed(using=False)
+    random.seed(115)
+    sst_dataset = PTBDataset(
+        # f'../data/sst/train_cl.txt', use_spans=True, span_min_length=4
+        f'data/sst/train.txt', use_spans=False
+    )
+    sst_free_augmenter = CParseLengthFreeAugmenter(sst_dataset)
+    sst_augmented_dataset = sst_free_augmenter.augment(100000)
+    from IPython import embed; embed(using=False)
 
-    # random.seed(115)
-    # sst_dataset = PTBDataset(
-    #     # f'../data/sst/train_cl.txt', use_spans=True, span_min_length=4
-    #     f'data/sst/train.txt', use_spans=False
-    # )
-    # sst_augmenter = CParseAugmenter(sst_dataset)
-    # sst_augmented_dataset = sst_augmenter.augment(100000)
-    # from IPython import embed; embed(using=False)
+    random.seed(115)
+    sst_dataset = PTBDataset(
+        # f'../data/sst/train_cl.txt', use_spans=True, span_min_length=4
+        f'data/sst/train.txt', use_spans=False
+    )
+    sst_augmenter = CParseAugmenter(sst_dataset)
+    sst_augmented_dataset = sst_augmenter.augment(100000)
+    from IPython import embed; embed(using=False)
 
-    # # Joint augmenter unit test
-    # from data import UniversalDependenciesDataset
-    # dataset = UniversalDependenciesDataset(
-    #     # '../data/*/*/en*dev*conllu',
-    #     # '../data/universal-dependencies-1.2/tags.txt'
-    #     'data/conllu/en*dev*conllu',
-    #     'data/tags.txt'
-    # )
-    # augmenter = DependencyParsingJointAugmenter(dataset)
-    # augmented_dataset = augmenter.augment()
-    # from IPython import embed; embed(using=False)
+    # Joint augmenter unit test
+    from data import UniversalDependenciesDataset
+    dataset = UniversalDependenciesDataset(
+        # '../data/*/*/en*dev*conllu',
+        # '../data/universal-dependencies-1.2/tags.txt'
+        'data/conllu/en*dev*conllu',
+        'data/tags.txt'
+    )
+    augmenter = DependencyParsingJointAugmenter(dataset)
+    augmented_dataset = augmenter.augment()
+    from IPython import embed; embed(using=False)
 
-    # # POS tagging augmenter unit test
-    # from data import UniversalDependenciesDataset
-    # dataset = UniversalDependenciesDataset(
-    #     # '../data/*/*/en*dev*conllu',
-    #     # '../data/universal-dependencies-1.2/tags.txt'
-    #     'data/conllu/en*dev*conllu',
-    #     'data/tags.txt'
-    # )
-    # augmenter = POSTagBaselineAugmenter(dataset)
-    # augmented_dataset = augmenter.augment()
-    # from IPython import embed; embed(using=False)
+    # POS tagging augmenter unit test
+    from data import UniversalDependenciesDataset
+    dataset = UniversalDependenciesDataset(
+        # '../data/*/*/en*dev*conllu',
+        # '../data/universal-dependencies-1.2/tags.txt'
+        'data/conllu/en*dev*conllu',
+        'data/tags.txt'
+    )
+    augmenter = POSTagBaselineAugmenter(dataset)
+    augmented_dataset = augmenter.augment()
+    from IPython import embed; embed(using=False)
 
-    # # Dep parsing unit test
-    # from data import UniversalDependenciesDataset
-    # dep_dataset = UniversalDependenciesDataset(
-    #     # '../data/universal_treebanks_v2.0/std/en/en-universal-dev.conll',
-    #     # '../data/universal_treebanks_v2.0/std/tags.txt'
-    #     'data/conllu/en-universal-dev.conll',
-    #     'data/tags.txt'
-    # )
-    # augmenter = DependencyParsingAugmenter(dep_dataset)
-    # augmented_dataset = augmenter.augment()
-    # from IPython import embed; embed(using=False)
-   
-    # # POS tagging augmenter unit test
-    # from data import UniversalDependenciesDataset
-    # dataset = UniversalDependenciesDataset(
-    #     # '../data/*/*/en*train*conllu',
-    #     # '../data/universal-dependencies-1.2/tags.txt'
-    #     'data/conllu/en*train*conllu',
-    #     'data/tags.txt'
-    # )
-    # augmenter = POSTagAugmenter(dataset)
-    # augmented_dataset = augmenter.augment()
-    # from IPython import embed; embed(using=False)
+    # Dep parsing unit test
+    from data import UniversalDependenciesDataset
+    dep_dataset = UniversalDependenciesDataset(
+        # '../data/universal_treebanks_v2.0/std/en/en-universal-dev.conll',
+        # '../data/universal_treebanks_v2.0/std/tags.txt'
+        'data/conllu/en-universal-dev.conll',
+        'data/tags.txt'
+    )
+    augmenter = DependencyParsingAugmenter(dep_dataset)
+    augmented_dataset = augmenter.augment()
+    from IPython import embed; embed(using=False)
 
-    # from data import UniversalDependenciesDataset
-    # ud_dataset = UniversalDependenciesDataset(
-    #     # '../data/ud-treebanks-v2.6/UD_English-*/en_ewt-ud-train.conllu', 
-    #     # '../data/ud-treebanks-v2.6/tags.txt'
-    #     'data/conllu/en_ewt-ud-train.conllu',
-    #     'data/tags.txt'
-    # )
-    # ud_rand_augmenter = POSTagRandomAugmenter(ud_dataset)
-    # ud_rand_augmenter.augment()
-    # from IPython import embed; embed(using=False)
+    # POS tagging augmenter unit test
+    from data import UniversalDependenciesDataset
+    dataset = UniversalDependenciesDataset(
+        # '../data/*/*/en*train*conllu',
+        # '../data/universal-dependencies-1.2/tags.txt'
+        'data/conllu/en*train*conllu',
+        'data/tags.txt'
+    )
+    augmenter = POSTagAugmenter(dataset)
+    augmented_dataset = augmenter.augment()
+    from IPython import embed; embed(using=False)
+
+    from data import UniversalDependenciesDataset
+    ud_dataset = UniversalDependenciesDataset(
+        # '../data/ud-treebanks-v2.6/UD_English-*/en_ewt-ud-train.conllu', 
+        # '../data/ud-treebanks-v2.6/tags.txt'
+        'data/conllu/en_ewt-ud-train.conllu',
+        'data/tags.txt'
+    )
+    
+    ud_rand_augmenter = POSTagRandomAugmenter(ud_dataset)
+    ud_rand_augmenter.augment()
+    from IPython import embed; embed(using=False)
