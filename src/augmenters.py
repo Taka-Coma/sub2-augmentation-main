@@ -619,10 +619,13 @@ if __name__ == "__main__":
         # f'../data/sst/train_c.txt', use_spans=False
         f'data/sst/train.txt', use_spans=False
     )
-
     sst_rand_augmenter = CParseRandomAugmenter(sst_dataset)
     sst_augmented_dataset = sst_rand_augmenter.augment(100000)
+    with open('CParseRandom.binaryfile', 'wb') as f:
+        pickle.dump(sst_augmented_dataset , f)
     from IPython import embed; embed(using=False)
+
+
 
     random.seed(115)
     sst_dataset = PTBDataset(
@@ -631,7 +634,11 @@ if __name__ == "__main__":
     )
     sst_syno_augmenter = CParseSynonymAugmenter(sst_dataset)
     sst_augmented_dataset = sst_syno_augmenter.augment(100000)
+    with open('CParseSynonym.binaryfile', 'wb') as f:
+        pickle.dump(sst_augmented_dataset , f)
     from IPython import embed; embed(using=False)
+
+
 
     random.seed(115)
     sst_dataset = PTBDataset(
@@ -640,7 +647,11 @@ if __name__ == "__main__":
     )
     sst_free_augmenter = CParseLengthFreeAugmenter(sst_dataset)
     sst_augmented_dataset = sst_free_augmenter.augment(100000)
+    with open('CParseLengthFree.binaryfile', 'wb') as f:
+        pickle.dump(sst_augmented_dataset , f)
     from IPython import embed; embed(using=False)
+
+
 
     random.seed(115)
     sst_dataset = PTBDataset(
@@ -649,7 +660,11 @@ if __name__ == "__main__":
     )
     sst_augmenter = CParseAugmenter(sst_dataset)
     sst_augmented_dataset = sst_augmenter.augment(100000)
+    with open('CParse.binaryfile', 'wb') as f:
+        pickle.dump(sst_augmented_dataset , f)
     from IPython import embed; embed(using=False)
+
+
 
     # Joint augmenter unit test
     from data import UniversalDependenciesDataset
@@ -661,7 +676,11 @@ if __name__ == "__main__":
     )
     augmenter = DependencyParsingJointAugmenter(dataset)
     augmented_dataset = augmenter.augment()
+    with open('DependencyParsingJoint.binaryfile', 'wb') as f:
+        pickle.dump(augmented_dataset , f)
     from IPython import embed; embed(using=False)
+
+
 
     # POS tagging augmenter unit test
     from data import UniversalDependenciesDataset
@@ -673,7 +692,11 @@ if __name__ == "__main__":
     )
     augmenter = POSTagBaselineAugmenter(dataset)
     augmented_dataset = augmenter.augment()
+    with open('POSTagBaseline.binaryfile', 'wb') as f:
+        pickle.dump(augmented_dataset , f)
     from IPython import embed; embed(using=False)
+
+
 
     # Dep parsing unit test
     from data import UniversalDependenciesDataset
@@ -685,7 +708,11 @@ if __name__ == "__main__":
     )
     augmenter = DependencyParsingAugmenter(dep_dataset)
     augmented_dataset = augmenter.augment()
+    with open('DependencyParsing.binaryfile', 'wb') as f:
+        pickle.dump(augmented_dataset , f)
     from IPython import embed; embed(using=False)
+
+
 
     # POS tagging augmenter unit test
     from data import UniversalDependenciesDataset
@@ -697,7 +724,10 @@ if __name__ == "__main__":
     )
     augmenter = POSTagAugmenter(dataset)
     augmented_dataset = augmenter.augment()
+    with open('POSTag.binaryfile', 'wb') as f:
+        pickle.dump(augmented_dataset , f)
     from IPython import embed; embed(using=False)
+
 
     from data import UniversalDependenciesDataset
     ud_dataset = UniversalDependenciesDataset(
@@ -706,7 +736,8 @@ if __name__ == "__main__":
         'data/conllu/en_ewt-ud-train.conllu',
         'data/tags.txt'
     )
-    
     ud_rand_augmenter = POSTagRandomAugmenter(ud_dataset)
     ud_rand_augmenter.augment()
+    with open('POSTagRandom.binaryfile', 'wb') as f:
+        pickle.dump(augmented_dataset , f)
     from IPython import embed; embed(using=False)
