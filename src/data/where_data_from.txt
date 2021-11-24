@@ -1,0 +1,5 @@
+sst
+Stanford Sentiment Treebank (SST)より取得
+https://nlp.stanford.edu/sentiment/code.html
+
+conllu

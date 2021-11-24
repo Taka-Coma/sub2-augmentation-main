@@ -1,2 +1,2 @@
-# sub2-augmentation-main
-sub2 for personal use
+# sub2-augmentation
+Subtree/subsequence substitution as data augmentation
