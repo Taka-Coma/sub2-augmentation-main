@@ -61,7 +61,7 @@ class UniversalDependenciesDataset(Dataset):
         current_conll_data = list()
         for path in glob(data_path_template):
             # print("Now reading ",path)
-            for line in open(path):
+            for line in open(path,encoding="cp437"):
                 # print("line:  ",line)
                 if self.is_data_line(line):
                     current_conll_data.append(line.strip().split('\t'))
@@ -72,7 +72,7 @@ class UniversalDependenciesDataset(Dataset):
                 self.data.append(Sentence(current_conll_data))
     # 
     def print(self, file_name):
-        with open(file_name, 'w') as fout:
+        with open(file_name, 'w',encoding='windows-1252') as fout:
             for sent in self.data:
                 sent.print(fout)
             fout.close()
